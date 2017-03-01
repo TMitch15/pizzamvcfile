@@ -24,7 +24,7 @@ public class Controller extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         System.out.println("In controller");
@@ -54,6 +54,7 @@ public class Controller extends HttpServlet {
             // get parameters passed in from the request
             String email = request.getParameter("email");
             String size = request.getParameter("size");
+            String style = request.getParameter("style");
             String[] toppingArray = request.getParameterValues("toppings");
 
             // convert toppingArray to a comma separated string
@@ -77,7 +78,7 @@ public class Controller extends HttpServlet {
             // store data in an PizzaOrder object
             // the PizzaOrder class is part of the MVC model 
             // as is the DAO (data access object)
-            PizzaOrder myOrder = new PizzaOrder(email, size, toppings);
+            PizzaOrder myOrder = new PizzaOrder(email, size, style, toppings);
             System.out.println("Controller:order:pizza=" + myOrder);
 
             // validate the parameters

@@ -21,12 +21,12 @@ import java.util.Scanner;
  */
 public class DAOPizzaOrder {
 
-    public static void addOrder(PizzaOrder order, String filepath) throws IOException {
+      public static void addOrder(PizzaOrder order, String filepath) throws IOException {
         File file = new File(filepath);
 
         // the FileWriter true keyword indicates appending to end of file
         try (PrintWriter out = new PrintWriter(new FileWriter(file, true))) {
-            out.println(order.getEmail() + "|" + order.getSize() + "|" + order.getToppings());
+            out.println(order.getEmail() + "|" + order.getSize() + "|" + order.getStyle() + "|" + order.getToppings());
         }
     }
 
@@ -40,8 +40,9 @@ public class DAOPizzaOrder {
             String[] lineArray = line.split("[|]");
             String email = lineArray[0];
             String size = lineArray[1];
-            String toppings = lineArray[2];
-            PizzaOrder order = new PizzaOrder(email, size, toppings);
+            String style = lineArray[2];
+            String toppings = lineArray[3];
+            PizzaOrder order = new PizzaOrder(email, size, style, toppings);
             list.add(order);
         }
 //        System.out.println("list=" + list);
